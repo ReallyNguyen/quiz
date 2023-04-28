@@ -1,0 +1,98 @@
+[
+    {
+        "questionID": 1,
+        "img": [
+            "quiz/jacket.png",
+            "quiz/sweater.png",
+            "quiz/jeans.png"
+        ],
+        "question": "What do you do with your old clothes?",
+        "options": [
+            {
+                "option": "Repurpose them",
+                "point": 2,
+                "result": "Great job! Repurposing is eco-friendly, creative, and reduces waste.",
+                "outcome": "\u2713"
+            },
+            {
+                "option": "Throw them out",
+                "point": 0,
+                "result": "Not the best choice. Consider repurposing or donating them next time.",
+                "outcome": "\u2717"
+            },
+            {
+                "option": "Donate them",
+                "point": 1,
+                "result": "Good effort! Donating old clothes is a great way to give them a second life.",
+                "outcome": "\u2713"
+            }
+        ]
+    },
+    {
+        "questionID": 2,
+        "img": "quiz/store.png",
+        "question": "Where do you shop frequently?",
+        "options": [
+            {
+                "option": "Eco-friendly brands",
+                "point": 1,
+                "result": "You're making sustainable choices!",
+                "outcome": "\u2713"
+            },
+            {
+                "option": "Thrift stores",
+                "point": 2,
+                "result": "Great job! Thrift stores are an excellent way to reduce waste and support sustainability.",
+                "outcome": "\u2713"
+            },
+            {
+                "option": "Fast fashion brands",
+                "point": 0,
+                "result": "Take the initiative to embrace sustainable fashion choices and opt for alternatives to fast fashion in order to significantly reduce your ecological footprint.",
+                "outcome": "\u2717"
+            }
+        ]
+    },
+    {
+        "questionID": 3,
+        "img": [
+            "quiz/bag.png",
+            "quiz/cup.png"
+        ],
+        "question": "Do you use reusable products such as straws, cups, bags?",
+        "options": [
+            {
+                "option": "Yes, I use reusable products",
+                "point": 1,
+                "result": "Good job! Using reusable products is a great way to reduce waste and help the environment.",
+                "outcome": "\u2713"
+            },
+            {
+                "option": "No, I never use reusable products",
+                "point": 0,
+                "result": "Start using reusable products! They are a sustainable choice that can make a positive impact on the environment.",
+                "outcome": "\u2717"
+            }
+        ]
+    },
+    {
+        "questionID": 4,
+        "img": "quiz/bottles.png",
+        "question": "Do you recycle your bottles, cans, glass, paper, etc.?",
+        "options": [
+            {
+                "option": "Yes, I recycle",
+                "point": 1,
+                "negative": -1,
+                "result": "Good job! Recycling is an important practice that helps reduce waste and conserve resources.",
+                "outcome": "\u2713"
+            },
+            {
+                "option": "No, I never recycle",
+                "point": 0,
+                "result": "Start recycling today! Recycling is an easy and effective way to contribute to a more sustainable future.",
+                "outcome": "\u2717"
+            }
+        ]
+    }
+]

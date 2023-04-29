@@ -8,9 +8,15 @@ export default function Quiz() {
 
   // function to add or subtract points based on user selection
   const handleSelection = (questionID, optionPoint) => {
-    setScore(score + optionPoint)
-    // store the user's selection in local storage for later use
-    localStorage.setItem(`question${questionID}`, optionPoint)
+    const previousSelection = localStorage.getItem(`question${questionID}`)
+    if (!previousSelection) {
+      setScore(score + optionPoint)
+      // store the user's selection in local storage for later use
+      localStorage.setItem(`question${questionID}`, optionPoint)
+    } else if (previousSelection != optionPoint) {
+      setScore(score - previousSelection + optionPoint)
+      localStorage.setItem(`question${questionID}`, optionPoint)
+    }
   }
 
   // function to go back and subtract points if the user navigates back to a previous question
@@ -90,12 +96,14 @@ export default function Quiz() {
                   type="radio"
                   name={`question${quizData[currentQuestionIndex].questionID}`}
                   value={index + 1}
-                  onClick={() =>
-                    handleSelection(
-                      quizData[currentQuestionIndex].questionID,
-                      option.point
-                    )
-                  }
+                  onClick={() => {
+                    if (localStorage.getItem(`question${quizData[currentQuestionIndex].questionID}`) != option.point) {
+                        handleSelection(
+                          quizData[currentQuestionIndex].questionID,
+                          option.point
+                        );
+                    }
+                  }}
                 />
                 {option.option}
               </label>

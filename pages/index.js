@@ -21,12 +21,19 @@ export default function Quiz() {
 
   // function to go back and subtract points if the user navigates back to a previous question
   const handleBack = (questionID) => {
-    const previousSelection = localStorage.getItem(`question${questionID}`)
+    const previousSelection = localStorage.getItem(`question${questionID}`);
     if (previousSelection) {
-      setScore(score - parseInt(previousSelection))
+      const currentOption = quizData[currentQuestionIndex].options.find(
+        (option) => option.point === parseInt(previousSelection)
+      );
+      setScore(score - parseInt(previousSelection));
     }
-    setCurrentQuestionIndex(currentQuestionIndex - 1)
-  }
+    // update the current question index to go back to the previous question
+    setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
+  };
+
+
+
 
   // function to go to the next question and reset the score for that question
   const handleNext = () => {
@@ -91,24 +98,21 @@ export default function Quiz() {
           <h2>{quizData[currentQuestionIndex].question}</h2>
           {quizData[currentQuestionIndex].options.map((option, index) => (
             <div key={option.option}>
-              <label>
-                <input
-                  type="radio"
-                  name={`question${quizData[currentQuestionIndex].questionID}`}
-                  value={index + 1}
-                  onClick={() => {
-                    if (localStorage.getItem(`question${quizData[currentQuestionIndex].questionID}`) != option.point) {
-                        handleSelection(
-                          quizData[currentQuestionIndex].questionID,
-                          option.point
-                        );
-                    }
-                  }}
-                />
+              <button
+                onClick={() => {
+                  if (localStorage.getItem(`question${quizData[currentQuestionIndex].questionID}`) !== option.point) {
+                    handleSelection(
+                      quizData[currentQuestionIndex].questionID,
+                      option.point
+                    );
+                  }
+                }}
+              >
                 {option.option}
-              </label>
+              </button>
             </div>
           ))}
+
           {currentQuestionIndex > 0 && (
             <button onClick={() => handleBack(quizData[currentQuestionIndex].questionID)}>Back</button>
           )}

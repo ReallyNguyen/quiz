@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import quizData from '/data/quizData.json'
-import styles from '@/styles/Home.module.css' 
+import styles from '@/styles/Home.module.css'
+import Image from 'next/image'
 
 export default function Quiz() {
   const [questionIndex, setQuestionIndex] = useState(0)
@@ -78,26 +79,24 @@ export default function Quiz() {
         </div>
         <div className={styles.main_results}>
           <h1 className={styles.answer}>Your Answer</h1>
-          
+          {summary}
   
           <div className={styles.quest_great}>
             <h1 className={styles.quest}>Your Quest</h1>
             <div className={styles.improve_great}>
               <h2>How to improve</h2>
-
-
-
-              {summary}
-
-
-
+              {summary.map((option, index) => (
+                <div key={index}>
+                  <p>{quizData[index].options.find(o => o.option === option).result}</p>
+                </div>
+              ))}
             </div>
           </div>
   
-          <div className={styles.result_buttons_great}>
+          {/* <div className={styles.result_buttons_great}>
             <button onClick={handleIntro}>Redo the journey?</button>
             <button onClick={handleHome}>Go back to home</button>
-          </div>
+          </div> */}
         </div>
       </div>
     );
